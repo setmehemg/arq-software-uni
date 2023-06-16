@@ -6,16 +6,16 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class UserRouteTest extends TestCase
+class RegistroRouteTest extends TestCase
 {
     /**
      * A basic feature test example.
      *
      * @return void
      */
-    public function UserTest()
+    public function test_example()
     {
-        $response = $this->get('/usuarios');
+        $response = $this->get('/registro');
 
         $response->assertStatus(200);
     }
