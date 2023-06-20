@@ -19,7 +19,6 @@ class EventoTest extends TestCase
             'descricao' => 'This is a test event.',
             'data_inicial' => '2023-06-18',
             'data_final' => '2023-06-20',
-            //'lugares' => 15,
         ];
 
         $event = Eventos::create($eventData);
@@ -28,6 +27,5 @@ class EventoTest extends TestCase
         $this->assertEquals($eventData['descricao'], $event->descricao);
         $this->assertEquals($eventData['data_inicial'], $event->data_inicial);
         $this->assertEquals($eventData['data_final'], $event->data_final);
-        //$this->assertEquals($eventData['lugares'], $event->lugares);
     }
 }
