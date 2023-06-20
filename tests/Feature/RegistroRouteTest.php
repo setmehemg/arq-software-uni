@@ -12,7 +12,6 @@ class RegistrationTest extends TestCase
 
     public function testRegistrationFlow()
     {
-        // Simulate a POST request to the registration endpoint with valid data
         $response = $this->post('/registro', [
             'name' => 'John Doe',
             'username' => 'johndoe1',
@@ -20,8 +19,8 @@ class RegistrationTest extends TestCase
         ]);
 
         // Assertions
-        $response->assertStatus(302); // Expecting a redirect after successful registration
-        $response->assertRedirect('/'); // Expecting a redirect to the dashboard page
+        $response->assertStatus(302); 
+        $response->assertRedirect('/'); 
 
         // Check if the user was created in the database
         $this->assertDatabaseHas('users', [
