@@ -15,8 +15,8 @@ class InscritoTest extends TestCase
     public function testInscricaoDataIsSaved()
     {
         $inscricaoData = [
-            'eventos_id' => 1,
-            'users_id' => 2,
+            'eventos_id' => 2,
+            'users_id' => 1,
         ];
 
         $inscrito = Inscricao::create($inscricaoData);
