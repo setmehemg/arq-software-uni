@@ -1,0 +1,406 @@
+    1  cd /etc/netplan/
+    2  sudo vim 00-installer-config.yaml 
+    3  netplan try
+    4  sudo netplan try
+    5  sudo netplan apply
+    6  ping 8.8.8.8
+    7  shutdown now
+    8  ls
+    9  sudo adduser admlab
+   10  ls
+   11  clear
+   12  vim sudo
+   13  sudo apt update
+   14  sudo apt upgrade
+   15  ls
+   16  clear
+   17  sudo su
+   18  exit
+   19  sudo apt-get install openssh-server
+   20  sudo systemctl enable ssh
+   21  sudo systemctl start ssh
+   22  ip -c a
+   23  shutdown now
+   24  passwd univates
+   25  exit
+   26  clear
+   27  ls
+   28  shutdown now
+   29  sudo vim /etc/netplan/00-installer-config.yaml 
+   30  sudo netplan try
+   31  sudo netplan apply
+   32  exit
+   33  sudo apt update
+   34  sudo apt-get install apache2 -y
+   35  sudo apt-get update
+   36  apache2
+   37  sudo apt-get upgrade
+   38  sudo apt-get install mysql-server
+   39  reboot
+   40  sudo reboot
+   41  sudo apt-get install mysql-server
+   42  sudo apt remove mysql mysql-server
+   43  sudo apt remove mysql-server
+   44  sudo apt-get autoremove 
+   45  sudo apt-get autoclean
+   46  sudo apt-get install mysql-server
+   47  sudo apt-get purge mysql*
+   48  sudo rm -rf /etc/mysql/ /var/lib/mysql
+   49  sudo apt autoremove 
+   50  sudo apt autoclean
+   51  reboot
+   52  sudo reboot
+   53  sudo apt-get update
+   54  sudo apt-get install mysql-server
+   55  mysql
+   56  sudo mysql
+   57  sudo mysql_secure_installation 
+   58  sudo systemctl stop mysql
+   59  sudo apt-get remove --purge mysql-server
+   60  sudo apt-get remove --purge mysql-client
+   61  sudo apt-get remove --purge mysql-common
+   62  sudo rm -rf /etc/mysql /var/lib/mysql
+   63  sudo find / -iname 'mysql*' -exec rm -rf {} \;
+   64  sudo apt-get autoremove
+   65  sudo apt-get autoclean
+   66  sudo apt-get update
+   67  sudo apt-get clean
+   68  sudo apt-get check
+   69  sudo apt-get install mysql-server
+   70  sudo systemctl  start mysql
+   71  sudo systemctl status mysql
+   72  sudo mysql_secure_installation 
+   73  mysql_secure_installation 
+   74  sudo mysql
+   75  mysql_secure_installation 
+   76  sudo add-apt-repository -y ppa:ondrej/php
+   77  sudo apt-get update
+   78  sudo apt-get install libapache2-mod-php php php-common php-xml php-mysql php-gd php-opcache php-mbstring php-tokenizer php-json php-bcmath php-zip unzip -y
+   79  sudo apt-get install libapache2-mod-php php php-common php-xml php-mysql php-gd php-mbstring php-tokenizer php-json php-bcmath php-zip unzip -y
+   80  sudo nano /etc/php/8.1/apache2/php.ini
+   81  sudo systemctl restart apache2
+   82  sudo nano /etc/php/8.1/apache2/php.ini
+   83  sudo nano /etc/php/8.1/mods-available/
+   84  php -v
+   85  sudo nano /etc/php/8.2/apache2/php.ini 
+   86  sudo systemctl restart apache2
+   87  curl -sS https://getcomposer.org/installer | php
+   88  sudo mv composer.phar /usr/local/bin/composer
+   89  composer --version
+   90  sudo nano /etc/apache2/sites-available/laravel.conf
+   91  sudo a2enmod rewrite
+   92  sudo a2ensite laravel.conf
+   93  sudo systemctl restart apache2
+   94  sudo systemctl reload apache2
+   95  mkdir /var/www/html/laravel && cd /var/www/html/laravel
+   96  sudo mkdir /var/www/html/laravel && cd /var/www/html/laravel
+   97  git clone https://github.com/laravel/laravel.git
+   98  sudo git clone https://github.com/laravel/laravel.git
+   99  composer install --no-dev
+  100  sudo composer install --no-dev
+  101  nano composer.json
+  102  sudo nano composer.json
+  103  sudo composer install --no-dev
+  104  cd laravel/
+  105  ls
+  106  cd ..
+  107  ls
+  108  sudo rm composer.json 
+  109  cd laravel/
+  110  sudo composer install --no-dev
+  111  sudo chown -R www-data:www-data /var/www/html/laravel
+  112  sudo chown -R www-data:www-data /var/www/html/laravel/laravel
+  113  sudo chown -R www-data:www-data /var/www/html/laravel/laravel/storage
+  114  sudo chown -R www-data:www-data /var/www/html/laravel/laravel/bootstrap/cache
+  115  cp .env.example .env
+  116  sudo cp .env.example .env
+  117  php artisan key:generate
+  118  sudo php artisan key:generate
+  119  ls
+  120  php8.2 artisan key:generate
+  121  sudo php8.2 artisan key:generate
+  122  ls
+  123  sudo chown -R www-data:www-data /var/www/html/laravel/laravel/vendor
+  124  composer install
+  125  ls
+  126  cd ..
+  127  ls
+  128  cd ..
+  129  ls
+  130  cd laravel/
+  131  ls
+  132  cd laravel/
+  133  ls
+  134  find vendor
+  135  find */vendor
+  136  php artisan key:generate
+  137  ls
+  138  cd ..
+  139  ls
+  140  cd laravel/
+  141  ls
+  142  cd laravel/
+  143  ls
+  144  composer i
+  145  composer update
+  146  sudo apt-get install php-curl
+  147  composer update
+  148  sudo composer update
+  149  php artisan key:generate
+  150  sudo php artisan key:generate
+  151  sudo composer  i
+  152  sudo php artisan package:discover --ansi
+  153  sudo su
+  154  history
+  155  ls
+  156  rm -Rf /var/www/html/laravel
+  157  sudo rm -Rf /var/www/html/laravel
+  158  ls
+  159  cd ~
+  160  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  161  php -r "if (hash_file('sha384', 'composer-setup.php') === 
+  162  '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+  163  php composer-setup.php
+  164  php -r "unlink('composer-setup.php');"
+  165  sudo mv composer.phar /usr/local/bin/composer
+  166  cd /var/www/html/
+  167  composer create-project laravel/laravel:^9.0 henrique
+  168  sudo composer create-project laravel/laravel:^9.0 henrique
+  169  ./vendor/bin/sail up
+  170  cd henrique/
+  171  ./vendor/bin/sail up
+  172  history
+  173  cd /var/www/html/henrique/
+  174  ls
+  175  mysql -v
+  176  sudo mysql -v
+  177  sudo
+  178  sudo su
+  179  service mysql status
+  180  nano .env
+  181  mysql -u root -p
+  182  sudo php artisan migrate
+  183  sudo php artisan schema:dump
+  184  mysql -u 
+  185  mysql -u root
+  186  mysql -u root -p
+  187  sudo php artisan schema:dump --prune
+  188  sudo php artisan make:migration create_eventos_table
+  189  sudo php artisan make:migration create_usuarios_table
+  190  sudo php artisan make:migration create_inscricao_table
+  191  cd /var/www/html/henrique/
+  192  php artisan make:migration henriquedb
+  193  php artisan migrate
+  194  mysql -u root -pp
+  195  mysql -u root -p
+  196  php artisan make:controller apigeral
+  197  sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf 
+  198  udo systemctl restar
+  199  sudo systemctl restart mysql.service 
+  200  sudo ufw allow 3306/tcp
+  201  mysql -u root -p
+  202  sudo mysql 
+  203  sudo mysql -u root
+  204  sudo mysql -u root -p
+  205  sudo su
+  206  clear
+  207  sudo mysql -u root -p
+  208  cd /var/www/html/henrique/
+  209  php artisan make:model Eventos -mcr
+  210  mysql -u root -p
+  211  cd /var/www/html/henrique/
+  212  php artisan make:controller ApiController --api
+  213  mysql -u root -p
+  214  cd /var/www/henrique/
+  215  php artisan migrate::rollback
+  216  php artisan migrate:rollback
+  217  php artisan migrate
+  218  mysql -u root -p
+  219  php artisan migrate
+  220  php artisan migrate:rollback
+  221  php artisan migrate
+  222  mysql -u root -p
+  223  php artisan migrate
+  224  mysql -u root -p
+  225  cd /var/www/henrique/
+  226  php artisan migrate
+  227  php artisan migrate:status
+  228  history
+  229  history | grep henrique
+  230  cd ..
+  231  sudo composer create-project laravel/laravel:^9.0 henriquedois
+  232  nano /etc/apache2/sites-enabled/henrique.conf 
+  233  sudo nano /etc/apache2/sites-enabled/henrique.conf 
+  234  history | grep apache
+  235  apachectl configtest
+  236  sudo a2ensite rewrit
+  237  history | grep a2
+  238  sudo a2enmod rewrite
+  239  sudo a2ensite henrique.conf
+  240  sudo systemctl apache2 restart 
+  241  sudo systemctl restart apache2
+  242  cd henriquedois/
+  243  sudo chmod -Rf 775 . && sudo chown -Rf www-data:univates .
+  244  php artisan make:migrate eventos
+  245  php artisan make:migration eventos
+  246  php artisan make:migration inscricoes
+  247  mysql -u root -p
+  248  php artisan migrate
+  249  sudo cp /var/www/henrique/public/AdminLTE-3.2.0 /var/www/henriquedois/public/
+  250  sudo cp -Rf /var/www/henrique/public/AdminLTE-3.2.0 /var/www/henriquedois/public/
+  251  sudo cp -Rf /var/www/henrique/public/css /var/www/henriquedois/public/
+  252  sudo cp -Rf /var/www/henrique/public/js /var/www/henriquedois/public/
+  253  sudo cp -Rf /var/www/henrique/public/img /var/www/henriquedois/public/
+  254  sudo cp -Rf /var/www/henrique/public/plugins/ /var/www/henriquedois/public/
+  255  cd public/
+  256  ls
+  257  sudo chmod -Rf 775 . && sudo chown -Rf www-data:univates .
+  258  cd ..
+  259  sudo chmod -Rf 775 . && sudo chown -Rf www-data:univates .
+  260  mysql -u root -p
+  261  tail -f storage/logs/laravel.log 
+  262  tail -f /var/www/henriquedois/storage/logs/laravel.log 
+  263  mysql -u root -p 
+  264  cd /var/www/henriquedois/
+  265  php artisan make:migration insert_user
+  266  php artisan migrate
+  267  tail -f /var/www/henriquedois/storage/logs/laravel.log 
+  268  cd /var/www/henrique/
+  269  ls
+  270  php artisan migrate
+  271  mysql -u root -p
+  272  php artisan migrate
+  273  mysql -u root -p
+  274  php artisan migrate
+  275  mysql -u root -p
+  276  php artisan migrate:rollback
+  277  php artisan migrate
+  278  mysql -u root -p
+  279  php artisan migrate
+  280  mysql -u root -p
+  281  tail -f /var/www/henriquedois/storage/logs/laravel.log 
+  282  mysql -u root -p
+  283  cd /var/www/henriquedois/
+  284  ls
+  285  php artisan route:list
+  286  php artisan make:migrate insert_eventos
+  287  php artisan make:migration insert_eventos
+  288  php artisan migrate
+  289  php artisan make:seeder EventosTableSeeder
+  290  php artisan db:seed --class=EventosTable
+  291  php artisan db:seed --class=EventosTableSeeder
+  292  mysql -u root -p
+  293  git init
+  294  git add -A
+  295  git config --global --add safe.directory /var/www/henriquedois
+  296  git add -A
+  297  git commit -m "Aqui está"
+  298  git config --global user.name "setmehemg"
+  299  git config --global user.email "henrique.gewehr@universo.univates.br"
+  300  git commit -m "Aqui está"
+  301  git push
+  302  git remote add origin git@github.com:setmehemg/arq-software-uni.git
+  303  git push
+  304  git push --set-upstream origin master
+  305  git branch -M main
+  306  git push -u origin main
+  307  git remote add origin git@github.com:setmehemg/arq-software-uni.git
+  308  git push -u origin main
+  309  git push -u origin main -verbose
+  310  git push -u origin main --verbose
+  311  mysql -u root
+  312  mysql -u root -p
+  313  ping github.com
+  314  nano ~/.ssh/config
+  315  git push
+  316  git push -u origin main
+  317  sudo git push -u origin main
+  318  git config --global --add safe.directory /var/www/henriquedois
+  319  sudo git push -u origin main
+  320  sudo git config --global --add safe.directory /var/www/henriquedois
+  321  sudo git push -u origin main
+  322  ufw status
+  323  sudo ufw status
+  324  sudo apt updat
+  325  sudo apt update
+  326  sudo apt install apt-transport-https ca-certificates curl software-properties-common
+  327  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  328  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+  329  cat /etc/os-release 
+  330  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  331  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  332  sudo apt update
+  333  apt-cache policy docker-ce
+  334  sudo apt install docker-ce
+  335  reboot
+  336  sudo reboot
+  337  php artisan make:test EventoTest
+  338  php artisan test --filter EventoTest::testShow
+  339  history
+  340  php artisan test --filter EventoTest::testShow
+  341  php artisan test --filter EventoTest
+  342  cat ~/.ssh/config 
+  343  echo "# arq-software-uni" >> README.md
+  344  git init
+  345  git add README.md
+  346  git commit -m "first commit"
+  347  git branch -M main
+  348  git remote add origin https://github.com/setmehemg/arq-software-uni.git
+  349  git push -u origin main
+  350  git init
+  351  ls
+  352  rm -Rf .git
+  353  git init
+  354  git add README.md
+  355  echo "# arq-software-uni" >> README.md
+  356  git init
+  357  git commit -m "first commit"
+  358  git branch -M main
+  359  git remote add origin https://github.com/setmehemg/arq-software-uni.git
+  360  git push -u origin main
+  361  php artisan make:test UserRouteTest
+  362  php artisan test
+  363  php artisan make:test LoginRouteTest
+  364  php artisan test
+  365  php artisan make:test RegistroRouteTest
+  366  php artisan test
+  367  sudo systemctl status docker
+  368  sudo usermod -aG docker univates
+  369  groups
+  370  mysql -u univates
+  371  mysql -u root -p
+  372  groups
+  373  su - univates
+  374  mkdir -p ~/.docker/cli-plugins/
+  375  curl -SL https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+  376  chmod +x ~/.docker/cli-plugins/docker-compose
+  377  docker compose version
+  378  wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
+  379  sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+  380  sudo apt update
+  381  sudo apt install jenkins
+  382  sudo systemctl status jenkins
+  383  sudo apt install jenkins
+  384  apt remove jenkins
+  385  sud apt remove jenkins
+  386  sudo apt remove jenkins
+  387  sudo apt update
+  388  curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+  389  echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+  390  apt update
+  391  sudo apt update
+  392  sudo apt install jenkins
+  393  sudo apt-get install openjdk-11-jdk-headless
+  394  sudo apt install jenkins
+  395  sudo systemctl start jenkins.service
+  396  sudo systemctl status jenkins
+  397  sudo ufw allow 8080
+  398  php artisan make:test InscritoTest
+  399  cd /var/www/henriquedois/
+  400  php artisan make:test InscritoTest
+  401  php artisan test
+  402  php artisan db:seed EventosTableSeeder
+  403  php artisan test
+  404  php artisan make:test EventoRegisterTable
+  405  php artisan test
+  406  history >> hist.txt
