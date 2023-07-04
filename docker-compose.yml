@@ -1,28 +1,37 @@
 version: '3.8'
-services: 
-  db:
-    cap_add:
-      - SYS_NICE # Supress not useful error messages
-    image: mysql:8.0.33 # Retirar versão correta e verificar no DockerHub :D
-    restart: always # Reinicia o contâiner em caso de falha
-    ports:
-      - "3309:3306" # Porta 3309 p/ banco Desenvolvimento
-    environment:
-      - MYSQL_DATABASE=henriquedb10
-      - MYSQL_ROOT_PASSWORD=uniabat3
-    volumes:
-      - db_data:/var/lib/mysql
-  
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "83:80" # Porta 80 no container pra 83 da VM (eu acho)
-    depends_on:
-      - db
-    volumes:
-      - ./app:/var/www/henriquedois
 
-volumes:
- db_data:
+services:
+  laravel-app:
+    build:
+      context: '.'
+      args:
+        uid: ${UID}
+    container_name: laravel-app
+    environment:
+      - APACHE_RUN_USER=#${UID}
+      - APACHE_RUN_GROUP=#${UID}
+    volumes:
+      - .:/var/www/henriquedois
+    ports:
+      - 81:80
+    networks:
+      backend:
+        aliases:
+          - laravel-app
+
+  mysql:
+    image: mysql:8.0.33
+    container_name: mysql
+    volumes:
+      - ./run/var:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=uniabat3
+      - MYSQL_DATABASE=henriquedb10
+    networks:
+      backend:
+        aliases:
+          - db
+
+networks:
+  backend:
+    name: backend-network
