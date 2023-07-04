@@ -9,7 +9,7 @@ services:
     volumes:
       - .:/var/www/henriquedois
     depends_on:
-      - db
+      - mysql
 
   mysql:
     image: mysql:8.0
