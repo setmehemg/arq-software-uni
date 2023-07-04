@@ -1,42 +1,32 @@
 FROM php:8.2-apache
 
-RUN apt-get update
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    libzip-dev \
+    zip
 
-# 1. development packages
-RUN apt-get install -y \
-    git \
-    zip \
-    curl \
-    sudo \
-    unzip \
-    libicu-dev \
-    libbz2-dev \
-    libpng-dev \
-    libjpeg-dev \
-    libmcrypt-dev \
-    libreadline-dev \
-    libfreetype6-dev \
-    g++
+# Enable mod_rewrite
+RUN a2enmod rewrite
 
-# 2. apache configs + document root
-ENV APACHE_DOCUMENT_ROOT=/var/www/henriquedois
-RUN sed -ri -e 's!/var/www/henriquedois!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql zip
+
+ENV APACHE_DOCUMENT_ROOT=/var/www/henriquedois/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-# 3. mod_rewrite for URL rewrite and mod_headers for .htaccess extra headers like Access-Control-Allow-Origin-
-RUN a2enmod rewrite headers
+# Copy the application code
+COPY . /var/www/henriquedois
 
-# 4. start with base php config, then add extensions
-RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+# Set the working directory
+WORKDIR /var/www/henriquedois
 
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# 5. composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Install project dependencies
+RUN composer install
 
-# 6. we need a user with the same UID/GID with host user
-# so when we execute CLI commands, all the host file's ownership remains intact
-# otherwise command from inside container will create root-owned files and directories
-ARG uid
-RUN useradd -G www-data,root -u $uid -d /home/devuser devuser
-RUN mkdir -p /home/devuser/.composer && \
-    chown -R devuser:devuser /home/devuser
+# Set permissions
+RUN chown -R www-data:www-data /var/www/henriquedois/storage /var/www/henriquedois/bootstrap/cache
