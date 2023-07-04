@@ -1,37 +1,23 @@
 version: '3.8'
-
 services:
-  laravel-app:
+  app:
     build:
-      context: '.'
-      args:
-        uid: ${UID}
-    container_name: laravel-app
-    environment:
-      - APACHE_RUN_USER=#${UID}
-      - APACHE_RUN_GROUP=#${UID}
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:80
     volumes:
       - .:/var/www/henriquedois
-    ports:
-      - 81:80
-    networks:
-      backend:
-        aliases:
-          - laravel-app
+    depends_on:
+      - db
 
   mysql:
-    image: mysql:8.0.33
-    container_name: mysql
-    volumes:
-      - ./run/var:/var/lib/mysql
+    image: mysql:8.0
     environment:
-      - MYSQL_ROOT_PASSWORD=uniabat3
-      - MYSQL_DATABASE=henriquedb10
-    networks:
-      backend:
-        aliases:
-          - db
+      MYSQL_DATABASE: henriquedois
+      MYSQL_ROOT_PASSWORD: uniabat3
+    volumes:
+      - dbdata:/var/lib/mysql
 
-networks:
-  backend:
-    name: backend-network
+volumes:
+  dbdata:
