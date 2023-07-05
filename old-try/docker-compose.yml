@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:80
+    volumes:
+      - .:/var/www/henriquedois
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: henriquedois
+      MYSQL_ROOT_PASSWORD: uniabat3
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:

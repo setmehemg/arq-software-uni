@@ -12,11 +12,15 @@ RUN a2enmod rewrite
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql zip
 
-# Copy the application code for HTML folder
-COPY /var/www/henriquedois /var/www/html
+ENV APACHE_DOCUMENT_ROOT=/var/www/henriquedois/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# Copy the application code
+COPY . /var/www/henriquedois
 
 # Set the working directory
-WORKDIR /var/www/html
+WORKDIR /var/www/henriquedois
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -25,4 +29,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/henriquedois/storage /var/www/henriquedois/bootstrap/cache
