@@ -5,32 +5,49 @@ services:
     image: php:8.2-apache # imagem usada
     working_dir: /var/www/html/ # define essa pasta como padrão num docker exec
     build:
-      context: . # ?
+      context: . # inicialização
       dockerfile: Dockerfile # Usa o Dockerfile (da mesma pasta) como base
     ports:
       - 8001:80 # da porta 80(DOCKER(DENTRO)) para a porta 8001(EXTERNO(VM))
     networks:
       - laravel_network
     volumes:
-      -  /var/www/henriquedois:/var/www/html/ # copia do henriquedois(PC) para html(DOCKER)
+      - .:/var/www/html # copia do henriquedois(PC) para html(DOCKER)
     depends_on:
       - mysql #depende do banco pra subir
 
   mysql:
+    container_name: banco
     image: mysql:8.0 # imagem para o banco de dados
     environment: # variaveis de ambiente 
-      MYSQL_DATABASE: henriquedb10 # nome do banco a ser usado
-      MYSQL_USER: 'root' # user
-      MYSQL_PASSWORD: 'uniabat3' # senha
+      MYSQL_DATABASE: 'henriquedb10' # nome do banco a ser usado
       MYSQL_ROOT_PASSWORD: 'uniabat3' # senha do root
-    ports:
-      - "3307:3306"
+    #ports:
+    #  - "3307:3306"
     networks:
       - laravel_network
     volumes:
-      - dbdata:/var/lib/mysql 
+      - .docker/dbdata:/var/lib/mysql/ 
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
 
-volumes:
-  dbdata:
+  phpmyadmin:
+    container_name: ocr_phpmyadmin
+    image: phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: uniabat3
+    ports:
+      - "9090:80"
+    depends_on:
+      - mysql
+    networks:
+      - laravel_network
+
+#volumes:
+#  dbdata:
+#    driver: local
 networks:
   laravel_network:
+    driver: bridge
