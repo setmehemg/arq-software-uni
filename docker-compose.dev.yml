@@ -8,7 +8,7 @@ services:
       context: . # inicialização
       dockerfile: Dockerfile # Usa o Dockerfile (da mesma pasta) como base
     ports:
-      - 8003:80 # da porta 80(DOCKER(DENTRO)) para a porta 8002(EXTERNO(VM))
+      - 8003:80 # da porta 80(DOCKER(DENTRO)) para a porta 8003(EXTERNO(VM))
     networks:
       - laravel_network_dev
     volumes:
@@ -39,7 +39,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: uniabat3
     ports:
-      - "9090:80"
+      - "9093:80"
     depends_on:
       - mysql
     networks:

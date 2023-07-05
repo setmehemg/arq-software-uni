@@ -39,7 +39,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: uniabat3
     ports:
-      - "9090:80"
+      - "9091:80"
     depends_on:
       - mysql
     networks:
