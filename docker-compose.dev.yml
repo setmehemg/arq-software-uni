@@ -1,6 +1,8 @@
 version: '3.8' #versão do composer
 services:
   laravel:
+    environment:
+      - APP_ENV=development
     container_name: eventos-dev # nome do container para o docker
     image: php:8.2-apache # imagem usada
     working_dir: /var/www/html/ # define essa pasta como padrão num docker exec
@@ -27,7 +29,7 @@ services:
     networks:
       - laravel_network_dev
     volumes:
-      - .docker/dbdata:/var/lib/mysql/ 
+      - .docker/dbdata-dev:/var/lib/mysql/ 
       - ./mysql/my.cnf:/etc/mysql/my.cnf
 
   phpmyadmin:
