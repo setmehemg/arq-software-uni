@@ -21,6 +21,7 @@ WORKDIR /var/www/html
 
 ## Copy the application code for HTML folder
 COPY . /var/www/html
+RUN rm .env && mv .env.example .env
 
 ## Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
