@@ -24,14 +24,15 @@ WORKDIR /var/www/html
 
 ## Copy the application code for HTML folder
 COPY . /var/www/html
-RUN cp .env.example .env && php artisan key:generate
-
 
 ## Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 ## Install project dependencies
 RUN composer install
+
+##
+RUN cp .env.example .env && php artisan key:generate
 
 ## Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
