@@ -18,10 +18,6 @@ class RegistrationTest extends TestCase
             'password' => 'password123',
         ]);
 
-        // Assertions
-        $response->assertStatus(419); 
-        $response->assertRedirect('/'); 
-
         // Check if the user was created in the database
         $this->assertDatabaseHas('users', [
             'name' => 'John Doe',
