@@ -22,9 +22,9 @@ pipeline {
         
         stage('Execute Tests') {
             steps {
-                sh 'docker exec -t eventos-dev php artisan test'
                 sh 'docker exec eventos-dev php artisan migrate --force'
                 sh 'docker exec eventos-dev php artisan db:seed --class=EventosTableSeeder'
+                sh 'docker exec -t eventos-dev php artisan test'
             }
         }
         
