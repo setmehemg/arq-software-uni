@@ -17,9 +17,6 @@ pipeline {
         stage('Run Dev Environment') {
             steps {
                 sh 'docker compose -f docker-compose.dev.yml -p dev up -d'
-                sh "docker cp .env.example:."
-                sh "docker exec eventos-dev mv .env.example .env"
-                sh 'docker exec eventos-dev php artisan key:generate'
             }
         }
         
