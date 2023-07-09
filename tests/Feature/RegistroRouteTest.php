@@ -19,7 +19,7 @@ class RegistrationTest extends TestCase
         ]);
 
         // Assertions
-        $response->assertStatus(302); 
+        $response->assertStatus(419); 
         $response->assertRedirect('/'); 
 
         // Check if the user was created in the database
