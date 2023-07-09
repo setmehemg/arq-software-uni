@@ -1,5 +1,7 @@
 FROM php:8.2-apache
 
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
 # Install dependencies
 RUN apt-get update && \
     apt-get install -y \

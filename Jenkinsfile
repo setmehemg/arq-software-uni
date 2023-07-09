@@ -34,7 +34,7 @@ pipeline {
                         sh 'docker login -u henriquemg -p 12.Dv9456l'
                         sh 'docker push henriquemg/gcs-laravel:latest'
                     }
-                }
             }
         }
     }
+}
