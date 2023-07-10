@@ -59,7 +59,7 @@
         </div>
       </form>
       <p class="mb-0">
-        <a href="{{ route('registro') }}" class="text-center">Registre-se</a>
+        <a href="{{ route('registro') }}" class="text-center">Registre-se Aqui!</a>
       </p>
     </div>
     <!-- /.login-card-body -->
