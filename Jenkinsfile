@@ -10,7 +10,7 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t henriquemg/gcs-laravel:latest .'
+                sh 'docker build --build-arg ENV_FILE=.env.example -t henriquemg/gcs-laravel:latest .'
             }
         }
         

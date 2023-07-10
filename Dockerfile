@@ -1,6 +1,6 @@
 FROM php:8.2-apache
 
-ARG .env.example
+ARG ENV_FILE
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Install dependencies
@@ -35,7 +35,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install
 
 ##
-COPY .env.example .env
+COPY $ENV_FILE .env
 RUN php artisan key:generate
 
 ## Set permissions
