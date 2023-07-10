@@ -1,6 +1,5 @@
 FROM php:8.2-apache
 
-ARG ENV_FILE
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Install dependencies
@@ -35,8 +34,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install
 
 ##
-COPY $ENV_FILE .env
-RUN php artisan key:generate
+RUN cp .env.example .env && php artisan key:generate
 
 ## Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
