@@ -1,6 +1,9 @@
 version: '3.8' #versão do composer
 services:
   laravel:
+    environment:
+      - APP_ENV=production
+      - DB_HOST=mysql
     container_name: eventos-prod # nome do container para o docker
     image: henriquemg/gcs-laravel:latest # imagem usada
     build:
