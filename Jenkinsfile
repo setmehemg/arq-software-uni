@@ -19,6 +19,14 @@ pipeline {
                 sh 'docker compose -f docker-compose.dev.yml -p dev up -d'
             }
         }
+
+        stage("Populate .env file") {
+            steps {
+                dir("/var/lib/jenkins/workspace/envs/laravel-test") {
+                    fileOperations([fileCopyOperation(excludes: '', flattenFiles: true, includes: '.env', targetLocation: "${WORKSPACE}")])
+                }
+            }
+        }
         
         stage('Execute Tests') {
             steps {
