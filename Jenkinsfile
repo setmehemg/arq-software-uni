@@ -22,12 +22,12 @@ pipeline {
 
         stage("Populate .env file") {
             steps {
-                dir("/var/lib/jenkins/workspace/envs/laravel-test") {
+                dir("/var/lib/jenkins/workspace/envs/laravel") {
                     fileOperations([fileCopyOperation(excludes: '', flattenFiles: true, includes: '.env', targetLocation: "${WORKSPACE}")])
                 }
             }
         }
-        
+
         stage('Execute Tests') {
             steps {
                 sh 'docker exec eventos-dev php artisan migrate --force'
