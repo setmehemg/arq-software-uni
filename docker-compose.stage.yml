@@ -2,7 +2,7 @@ version: '3.8' #versão do composer
 services:
   laravel:
     container_name: eventos-homolog # nome do container para o docker
-    image: henriquemg/gcs-laravel:latest # imagem usada
+    image: docker.io/henriquemg/gcs-laravel:latest # imagem usada
     build:
       context: . # inicialização
       dockerfile: Dockerfile # Usa o Dockerfile (da mesma pasta) como base

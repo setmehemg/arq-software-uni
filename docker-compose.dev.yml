@@ -10,7 +10,7 @@ services:
       - "DB_USERNAME=root"
       - "DB_PASSWORD=uniabat3"
     container_name: eventos-dev # nome do container para o docker
-    image: henriquemg/gcs-laravel:latest # imagem usada
+    image: docker.io/henriquemg/gcs-laravel:latest # imagem usada
     build:
       context: . # inicialização
       dockerfile: Dockerfile # Usa o Dockerfile (da mesma pasta) como base
